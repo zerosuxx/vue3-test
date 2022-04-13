@@ -1,0 +1,6 @@
+{
+    "baseUrl": "http://localhost:5050",
+    "experimentalFetchPolyfill": true,
+    "viewportWidth": 1280,
+    "viewportHeight": 720
+}
