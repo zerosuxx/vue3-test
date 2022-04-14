@@ -1,6 +1,5 @@
 {
   "projects": {
-    "default": "tbtx-form",
-    "staging": "tbtx-form-staging"
+    "default": "tbtx-form"
   }
 }

@@ -36,3 +36,4 @@ jobs:
           args: deploy --only hosting:staging
         env:
           GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
+          PROJECT_ID: tbtx-form-staging
