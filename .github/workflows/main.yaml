@@ -40,7 +40,7 @@ jobs:
 #        run: npm run build
 
       - name: Deploy with client publish
-        run: deploy --target-env staging
+        run: client-publish deploy --target-env staging
 #        uses: docker://zerosuxx/client-publish
 #        with:
 #          entrypoint: client-publish
