@@ -10,13 +10,11 @@ env:
   FIREBASE_DEPLOY: true
   FIREBASE_PROJECT: tbtx-form
   FIREBASE_SITE: tbtx-form-staging
-  GOOGLE_APPLICATION_CREDENTIALS_JSON: ${{ secrets.GCP_SA_KEY }}
+  GOOGLE_APPLICATION_CREDENTIALS_JSON: aaa
 
 jobs:
   test-build-deploy:
     runs-on: ubuntu-latest
-    container:
-      image: zerosuxx/client-publish:latest
     steps:
 #      - name: Checkout code
 #        uses: actions/checkout@v3
@@ -40,11 +38,10 @@ jobs:
 #        run: npm run build
 
       - name: Deploy with client publish
-        run: GOOGLE_APPLICATION_CREDENTIALS_JSON=${{ secrets.GCP_SA_KEY }} client-publish deploy --target-env staging
-#        uses: docker://zerosuxx/client-publish
-#        with:
-#          entrypoint: client-publish
-#          args: deploy --target-env staging
+        uses: docker://zerosuxx/client-publish
+        with:
+          entrypoint: client-publish
+          args: deploy --target-env staging
 
 #      - name: Deploy to Firebase
 #        uses: w9jds/firebase-action@master
