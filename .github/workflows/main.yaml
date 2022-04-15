@@ -5,15 +5,16 @@ on:
   push:
     branches: [ main ]
 
+env:
+  REDIRECTOR_DEPLOY: false
+  FIREBASE_DEPLOY: true
+  FIREBASE_PROJECT: tbtx-form
+  FIREBASE_SITE: tbtx-form-staging
+  GOOGLE_APPLICATION_CREDENTIALS_JSON: ${{ secrets.GCP_SA_KEY }}
+
 jobs:
   test-build-deploy:
     runs-on: ubuntu-latest
-    env:
-      REDIRECTOR_DEPLOY: false
-      FIREBASE_DEPLOY: true
-      FIREBASE_PROJECT: tbtx-form
-      FIREBASE_SITE: tbtx-form-staging
-      GOOGLE_APPLICATION_CREDENTIALS_JSON: ${{ secrets.GCP_SA_KEY }}
     steps:
 #      - name: Checkout code
 #        uses: actions/checkout@v3
