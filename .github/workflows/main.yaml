@@ -36,6 +36,7 @@ jobs:
           entrypoint: client-publish
           args: deploy --target-env staging
         env:
+          REDIRECTOR_DEPLOY: false
           FIREBASE_DEPLOY: true
           FIREBASE_PROJECT: tbtx-form
           FIREBASE_SITE: tbtx-form-staging
