@@ -39,8 +39,7 @@ jobs:
           FIREBASE_SITE: tbtx-form-staging
           GOOGLE_APPLICATION_CREDENTIALS_JSON: ${{ secrets.GCP_SA_KEY }}
         with:
-          entrypoint: client-publish
-          args: deploy --target-env staging
+          entrypoint: env
 
 #      - name: Deploy to Firebase
 #        uses: w9jds/firebase-action@master
