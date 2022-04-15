@@ -40,5 +40,5 @@ jobs:
           GOOGLE_APPLICATION_CREDENTIALS_JSON: ${{ secrets.GCP_SA_KEY }}
           GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GCP_SA_KEY }}
         with:
-          entrypoint: client-publish
+          #entrypoint: client-publish
           args: deploy --target-env staging
