@@ -33,7 +33,8 @@ jobs:
       - name: Deploy with client publish
         uses: docker://zerosuxx/client-publish
         with:
-          entrypoint: client-publish deploy --target-env staging
+          entrypoint: client-publish
+          args: deploy --target-env staging
         env:
           FIREBASE_DEPLOY: true
           FIREBASE_PROJECT: tbtx-form
