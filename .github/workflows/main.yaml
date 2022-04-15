@@ -9,26 +9,26 @@ jobs:
   test-build-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Setup Node
-        uses: actions/setup-node@v3
-        with:
-          node-version-file: '.nvmrc'
-          cache: 'npm'
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Check lint
-        run: npm run lint
-
-      - name: Run tests
-        run: npm run test
-
-      - name: Build application
-        run: npm run build
+#      - name: Checkout code
+#        uses: actions/checkout@v3
+#
+#      - name: Setup Node
+#        uses: actions/setup-node@v3
+#        with:
+#          node-version-file: '.nvmrc'
+#          cache: 'npm'
+#
+#      - name: Install dependencies
+#        run: npm install
+#
+#      - name: Check lint
+#        run: npm run lint
+#
+#      - name: Run tests
+#        run: npm run test
+#
+#      - name: Build application
+#        run: npm run build
 
       - name: Deploy with client publish
         uses: docker://zerosuxx/client-publish
@@ -39,8 +39,7 @@ jobs:
           FIREBASE_SITE: tbtx-form-staging
           GOOGLE_APPLICATION_CREDENTIALS_JSON: ${{ secrets.GCP_SA_KEY }}
         with:
-          entrypoint: client-publish
-          args: deploy --target-env staging
+          entrypoint: env
 
 #      - name: Deploy to Firebase
 #        uses: w9jds/firebase-action@master
