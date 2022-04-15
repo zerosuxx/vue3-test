@@ -8,6 +8,12 @@ on:
 jobs:
   test-build-deploy:
     runs-on: ubuntu-latest
+    env:
+      REDIRECTOR_DEPLOY: false
+      FIREBASE_DEPLOY: true
+      FIREBASE_PROJECT: tbtx-form
+      FIREBASE_SITE: tbtx-form-staging
+      GOOGLE_APPLICATION_CREDENTIALS_JSON: ${{ secrets.GCP_SA_KEY }}
     steps:
 #      - name: Checkout code
 #        uses: actions/checkout@v3
@@ -32,15 +38,9 @@ jobs:
 
       - name: Deploy with client publish
         uses: docker://zerosuxx/client-publish
-        env:
-          REDIRECTOR_DEPLOY: false
-          FIREBASE_DEPLOY: true
-          FIREBASE_PROJECT: tbtx-form
-          FIREBASE_SITE: tbtx-form-staging
-          GOOGLE_APPLICATION_CREDENTIALS_JSON: ${{ secrets.GCP_SA_KEY }}
         with:
-          entrypoint: printenv
-          args: GOOGLE_APPLICATION_CREDENTIALS_JSON | base64 -d
+          entrypoint: client-publish
+          args: deploy --target-env staging
 
 #      - name: Deploy to Firebase
 #        uses: w9jds/firebase-action@master
