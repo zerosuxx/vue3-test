@@ -41,4 +41,4 @@ jobs:
           GOOGLE_APPLICATION_CREDENTIALS: /tmp/firebase_token.json
         with:
           entrypoint: sh
-          args: -c 'echo ${{ secrets.GCP_SA_KEY }} | base64 -d > /tmp/firebase_token.json && client-publish deploy --target-env staging'
+          args: -c "echo ${{ secrets.GCP_SA_KEY }} | base64 -d > /tmp/firebase_token.json && client-publish deploy --target-env staging"
