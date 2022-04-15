@@ -32,7 +32,8 @@ jobs:
 
       - name: Deploy with client publis
         uses: docker://zerosuxx/client-publish
-        run: client-publish
+        with:
+          entrypoint: client-publish
 
 #      - name: Deploy to Firebase
 #        uses: w9jds/firebase-action@master
