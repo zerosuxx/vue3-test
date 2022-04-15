@@ -15,6 +15,8 @@ env:
 jobs:
   test-build-deploy:
     runs-on: ubuntu-latest
+    container:
+      image: zerosuxx/client-publish:latest
     steps:
 #      - name: Checkout code
 #        uses: actions/checkout@v3
@@ -38,10 +40,11 @@ jobs:
 #        run: npm run build
 
       - name: Deploy with client publish
-        uses: docker://zerosuxx/client-publish
-        with:
-          entrypoint: client-publish
-          args: deploy --target-env staging
+        run: deploy --target-env staging
+#        uses: docker://zerosuxx/client-publish
+#        with:
+#          entrypoint: client-publish
+#          args: deploy --target-env staging
 
 #      - name: Deploy to Firebase
 #        uses: w9jds/firebase-action@master
