@@ -38,6 +38,7 @@ jobs:
           FIREBASE_PROJECT: tbtx-form
           FIREBASE_SITE: tbtx-form-staging
           GOOGLE_APPLICATION_CREDENTIALS_JSON: ${{ secrets.GCP_SA_KEY }}
+          GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GCP_SA_KEY }}
         with:
           entrypoint: client-publish
           args: deploy --target-env staging
