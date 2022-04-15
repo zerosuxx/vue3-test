@@ -30,10 +30,15 @@ jobs:
       - name: Build application
         run: npm run build
 
-      - name: Deploy with client publis
+      - name: Deploy with client publish
         uses: docker://zerosuxx/client-publish
         with:
-          entrypoint: client-publish
+          entrypoint: client-publish deploy --target-env staging
+        env:
+          FIREBASE_DEPLOY: true
+          FIREBASE_PROJECT: tbtx-form
+          FIREBASE_SITE: tbtx-form-staging
+          GOOGLE_APPLICATION_CREDENTIALS_JSON: ${{ secrets.GCP_SA_KEY }}
 
 #      - name: Deploy to Firebase
 #        uses: w9jds/firebase-action@master
